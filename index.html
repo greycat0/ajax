@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>ajax</title>
+</head>
+<body>
+	<script
+			  src="http://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+			  crossorigin="anonymous">
+	</script>
+	name:
+	<input type='text' name='name' id='name'><br>
+	email:
+	<input type='text' name='email' id='email'><br>
+	review:
+	<textarea id='review' name='review'></textarea><br>
+	<button onclick="send()">OK</button>
+	<div id='res'></div>
+	<script type="text/javascript">
+		function send () {
+			// var inf_name = $('#name_sel').val();
+			// var inf_obr = encodeURIComponent(inf_name);
+			// var email = $('#email').val();
+			// var email = encodeURIComponent(email);
+			// var review = $('#review').val();
+			// var review = encodeURIComponent(review);
+
+			// var total = 'nm=' + inf_obr + '&email=' + email + '&review=' + review;
+			// var request = new XMLHttpRequest();
+			// request.open('GET', 'server.php?' + total);
+			// request.send(null);
+			// request.onreadystatechange = function(){
+			// 	if (request.readyState == 4 && request.status == 200){
+			// 		var answer = request.responseText;
+			// 		$('#res').html(answer);
+			// 	}
+			// }
+			var data = $('#name,#email,#review').serialize();
+			$.ajax({
+				type: 'GET',
+				url: 'server.php',
+				data: data,
+				success: function(answer)
+				{
+					$('#res').html(answer);
+				}
+			});
+		}
+	</script>
+</body>
+</html>
